@@ -1,0 +1,246 @@
+<!-- Portfolio Component Template -->
+<div [class.dark]="darkMode" class="min-h-screen">
+  <!-- Navigation -->
+  <nav [ngClass]="darkMode ? 'bg-gray-800' : 'bg-white'" class="fixed top-0 left-0 right-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex flex-wrap items-center justify-between">
+        <h1 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-2xl font-bold">
+          {{ name }}
+        </h1>
+        <div class="flex items-center gap-4 flex-wrap">
+          <button 
+            *ngFor="let section of ['home', 'skills', 'projects', 'education', 'contact']"
+            (click)="scrollToSection(section)"
+            [ngClass]="{'bg-light-blue': activeSection === section}"
+            class="px-3 py-2 rounded-lg transition-colors hover:bg-gray-700"
+          >
+            {{ section | titlecase }}
+          </button>
+          <button
+            (click)="toggleDarkMode()"
+            [ngClass]="darkMode ? 'bg-yellow-400 text-gray-900' : 'bg-gray-800 text-white'"
+            class="px-4 py-2 rounded-lg hover:opacity-80 transition-opacity"
+          >
+            {{ darkMode ? '☀️ Light' : '🌙 Dark' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" [ngClass]="darkMode ? 'gradient-rainbow-dark' : 'gradient-rainbow-light'" class="pt-32 pb-20 px-4">
+    <div class="container mx-auto text-center">
+      <h1 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-5xl md:text-7xl font-bold mb-6">
+        {{ name }}
+      </h1>
+      <p [ngClass]="darkMode ? 'text-gray-200' : 'text-gray-800'" class="text-2xl md:text-3xl mb-4">
+        {{ role }}
+      </p>
+      <p [ngClass]="darkMode ? 'text-gray-300' : 'text-gray-700'" class="text-lg md:text-xl max-w-2xl mx-auto">
+        {{ bio }}
+      </p>
+      <div class="mt-8 flex gap-4 justify-center flex-wrap">
+        <a
+          *ngFor="let link of socialLinks"
+          [href]="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          [ngClass]="darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'"
+          class="px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+        >
+          {{ link.icon }} {{ link.name }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" [ngClass]="darkMode ? 'bg-gray-800' : 'bg-gray-50'" class="py-20 px-4">
+    <div class="container mx-auto">
+      <h2 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-4xl font-bold text-center mb-12">
+        💻 Full-Stack Skills
+      </h2>
+      
+      <div *ngFor="let category of skillCategories" class="mb-12">
+        <h3 [ngClass]="darkMode ? 'text-light-blue' : 'text-gray-800'" class="text-2xl font-bold mb-6">
+          {{ category.emoji }} {{ category.category }}
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            *ngFor="let skill of category.skills"
+            [ngClass]="darkMode ? 'bg-gray-700' : 'bg-white'"
+            class="p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-3xl">{{ skill.icon }}</span>
+              <span [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-lg font-semibold">
+                {{ skill.name }}
+              </span>
+            </div>
+            <div class="w-full bg-gray-300 rounded-full h-3">
+              <div
+                class="bg-gradient-to-r from-light-blue to-light-indigo h-3 rounded-full transition-all duration-500"
+                [style.width.%]="skill.level"
+              ></div>
+            </div>
+            <p [ngClass]="darkMode ? 'text-gray-300' : 'text-gray-600'" class="text-right mt-2 text-sm">
+              {{ skill.level }}%
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" [ngClass]="darkMode ? 'bg-gray-900' : 'bg-white'" class="py-20 px-4">
+    <div class="container mx-auto">
+      <h2 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-4xl font-bold text-center mb-12">
+        🚀 Featured Projects
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          *ngFor="let project of projects"
+          [ngClass]="darkMode ? 'bg-gray-800' : 'bg-gray-50'"
+          class="p-8 rounded-lg shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <h3 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-2xl font-bold">
+              {{ project.title }}
+            </h3>
+            <span [ngClass]="darkMode ? 'bg-light-blue text-gray-900' : 'bg-light-blue text-white'" class="px-3 py-1 rounded-full text-sm">
+              {{ project.category }}
+            </span>
+          </div>
+          <p [ngClass]="darkMode ? 'text-gray-300' : 'text-gray-700'" class="mb-4">
+            {{ project.description }}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              *ngFor="let tech of project.tech"
+              [ngClass]="darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-900'"
+              class="px-3 py-1 rounded-lg text-sm shadow"
+            >
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Certifications -->
+  <section id="education" [ngClass]="darkMode ? 'bg-gray-800' : 'bg-gray-50'" class="py-20 px-4">
+    <div class="container mx-auto">
+      <h2 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-4xl font-bold text-center mb-12">
+        🎓 Education & Certifications
+      </h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Education -->
+        <div>
+          <h3 [ngClass]="darkMode ? 'text-light-green' : 'text-gray-800'" class="text-2xl font-bold mb-6">
+            📚 Education
+          </h3>
+          <div class="space-y-6">
+            <div
+              *ngFor="let edu of education"
+              [ngClass]="darkMode ? 'bg-gray-700' : 'bg-white'"
+              class="p-6 rounded-lg shadow-lg"
+            >
+              <h4 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-xl font-bold mb-2">
+                {{ edu.degree }}
+              </h4>
+              <p [ngClass]="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                {{ edu.institution }}
+              </p>
+              <p [ngClass]="darkMode ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">
+                {{ edu.period }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div>
+          <h3 [ngClass]="darkMode ? 'text-light-violet' : 'text-gray-800'" class="text-2xl font-bold mb-6">
+            🏆 Certifications
+          </h3>
+          <div class="space-y-6">
+            <div
+              *ngFor="let cert of certifications"
+              [ngClass]="darkMode ? 'bg-gray-700' : 'bg-white'"
+              class="p-6 rounded-lg shadow-lg"
+            >
+              <h4 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-xl font-bold mb-2">
+                {{ cert.title }}
+              </h4>
+              <p [ngClass]="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                {{ cert.issuer }}
+              </p>
+              <p [ngClass]="darkMode ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">
+                {{ cert.date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hobbies -->
+      <div class="mt-12">
+        <h3 [ngClass]="darkMode ? 'text-light-orange' : 'text-gray-800'" class="text-2xl font-bold mb-6 text-center">
+          🎯 Hobbies & Interests
+        </h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          <div
+            *ngFor="let hobby of hobbies"
+            [ngClass]="darkMode ? 'bg-gray-700' : 'bg-white'"
+            class="px-6 py-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <span class="text-3xl">{{ hobby.icon }}</span>
+            <p [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="mt-2">
+              {{ hobby.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" [ngClass]="darkMode ? 'gradient-rainbow-dark' : 'gradient-rainbow-light'" class="py-20 px-4">
+    <div class="container mx-auto text-center">
+      <h2 [ngClass]="darkMode ? 'text-white' : 'text-gray-900'" class="text-4xl font-bold mb-8">
+        📬 Get In Touch
+      </h2>
+      <p [ngClass]="darkMode ? 'text-gray-200' : 'text-gray-800'" class="text-xl mb-8">
+        Let's connect and build something amazing together!
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          *ngFor="let link of socialLinks"
+          [href]="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          [ngClass]="darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'"
+          class="px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 text-lg font-semibold"
+        >
+          {{ link.icon }} {{ link.name }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer [ngClass]="darkMode ? 'bg-gray-900' : 'bg-gray-800'" class="py-8 px-4 text-white">
+    <div class="container mx-auto text-center">
+      <p class="text-lg">
+        © {{ getCurrentYear() }} {{ name }}. All rights reserved.
+      </p>
+      <p class="mt-2 text-sm text-gray-400">
+        Built with Angular 🅰️, Tailwind CSS 🎨, and TypeScript 📘
+      </p>
+    </div>
+  </footer>
+</div>

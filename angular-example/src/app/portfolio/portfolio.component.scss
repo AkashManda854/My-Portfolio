@@ -1,0 +1,145 @@
+// Portfolio Component Styles
+
+// Rainbow gradient backgrounds
+.gradient-rainbow-light {
+  background: linear-gradient(
+    135deg,
+    #ff8a8a 0%,
+    #ffb347 14%,
+    #fff68f 28%,
+    #b0f2b6 42%,
+    #add8e6 56%,
+    #c3b1e1 70%,
+    #e1b3ff 100%
+  );
+}
+
+.gradient-rainbow-dark {
+  background: linear-gradient(
+    135deg,
+    #d26a6a 0%,
+    #e6a96c 14%,
+    #e0cf6a 28%,
+    #78d2a5 42%,
+    #76b3eb 56%,
+    #9d92d1 70%,
+    #c491dd 100%
+  );
+}
+
+// Custom color classes
+.bg-light-blue {
+  background-color: #add8e6;
+}
+
+.text-light-blue {
+  color: #add8e6;
+}
+
+.bg-light-green {
+  background-color: #b0f2b6;
+}
+
+.text-light-green {
+  color: #b0f2b6;
+}
+
+.bg-light-orange {
+  background-color: #ffb347;
+}
+
+.text-light-orange {
+  color: #ffb347;
+}
+
+.bg-light-violet {
+  background-color: #e1b3ff;
+}
+
+.text-light-violet {
+  color: #e1b3ff;
+}
+
+.bg-light-indigo {
+  background-color: #c3b1e1;
+}
+
+.text-light-indigo {
+  color: #c3b1e1;
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Dark mode styles
+.dark {
+  color-scheme: dark;
+  
+  body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+}
+
+// Animation for hover effects
+.hover\:-translate-y-2:hover {
+  transform: translateY(-0.5rem);
+}
+
+.hover\:-translate-y-1:hover {
+  transform: translateY(-0.25rem);
+}
+
+// Transition classes
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+// Responsive grid utilities
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .md\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+body {
+  font-family: 'Fredoka', sans-serif;
+}
+
+.gradient-rainbow-light {
+  background: linear-gradient(135deg, 
+    #ff8a8a 0%, 
+    #ffb347 14%, 
+    #fff68f 28%, 
+    #b0f2b6 42%, 
+    #add8e6 56%, 
+    #c3b1e1 70%, 
+    #e1b3ff 100%
+  );
+}
+
+.gradient-rainbow-dark {
+  background: linear-gradient(135deg, 
+    #d26a6a 0%, 
+    #e6a96c 14%, 
+    #e0cf6a 28%, 
+    #78d2a5 42%, 
+    #76b3eb 56%, 
+    #9d92d1 70%, 
+    #c491dd 100%
+  );
+}
